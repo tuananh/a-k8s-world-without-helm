@@ -2,7 +2,7 @@
 
 > A Kubernetes world without Helm
 
-Từ trước tới h mình vẫn prefer Kustomize hơn Helm. Nó đơn giản hơn, dễ extend hơn.
+Từ trước tới h mình vẫn prefer Kustomize hơn Helm. Nó đơn giản hơn, easy to grasp và rất dễ để học và extend. Để giải thích Kustomize thì chỉ cần 5 phút là người mới có thể bắt đầu viết được. Còn helm thì ai ko familiar với go thì hơi ngán 1 chút với template engine.
 
 1 ví dụ với Helm. Nếu bạn cần support thêm property nào đó chẳng hạn thì khả năng phải update helm chart là rất cao. Viết 1 chart mà support đầy đủ mọi feature thì khá là mệt. Nhất là khi mọi người đang extend k8s functionalities với CRD và controller/operator rất phổ biến.
 

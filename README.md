@@ -11,9 +11,12 @@ Thời điểm cách đây vài năm thì việc support hết các property tro
 1 việc khác là validate và mutate cũng khá khó khăn với các tooling hiện tại nếu ko có sự trợ giúp từ admission controller. Thế nhưng admission controller chỉ có ở server side. 
 
 ## Introducing KRM
-nhìn qua thì KRM giống cái gì ?? mấy lệnh của Unix đúng ko? pipe output từ step này sang step tiếp theo.
 
-krm cũng mang hơi chút bóng dáng của admission controller, nhưng ở phía client. với krm, bạn cũng có thể validate hoặc mutate k8s resource object đc như admission controller. the difference is it's a hell lot easier to maintain vs writing rego for example (Looking at you OPA).
+Nhìn qua thì KRM giống cái gì ?? mấy lệnh của Unix đúng ko? pipe output từ step này sang step tiếp theo.
+
+Thực ra concept này cũng ko mới với kustomize nếu bạn có đọc codebase của kustomize kĩ 1 chút. thế nên nếu ai quen với kustomize thì việc này cũng không quá ngạc nhiên. chẳng qua các step của kustomize ko phải là do user provide ra mà thôi.
+
+KRM cũng mang hơi chút bóng dáng của admission controller, nhưng ở phía client. với krm, bạn cũng có thể validate hoặc mutate k8s resource object đc như admission controller. the difference is it's a hell lot easier to maintain vs writing rego for example (Looking at you OPA).
 
 bạn hoàn toàn có thể kết hợp krm với bất kì orchestrator nào mà bạn đang xài. với unix thì shell như bash là 1 orchestrator chẳng hạn thì với KRM, chúng ta có thể dùng kpt. Ko nhất thiết là kpt mà là có thể bất kì tool nào khác hỗ trợ KRM.
 

@@ -8,7 +8,7 @@ Từ trước tới h mình vẫn prefer Kustomize hơn Helm. Nó đơn giản h
 
 Thời điểm cách đây vài năm thì việc support hết các property trong các object phổ biến của k8s thì tuy hơi cực nhưng vẫn làm được. Thế nhưng controller/operator/CRD bây h càng ngày càng nhiều thì việc này là bất khả thi.
 
-1 việc khác là validate và mutate cũng khá khó khăn với các tooling hiện tại nếu ko có sự trợ giúp từ admission controller. 
+1 việc khác là validate và mutate cũng khá khó khăn với các tooling hiện tại nếu ko có sự trợ giúp từ admission controller. Thế nhưng admission controller chỉ có ở server side. 
 
 ## Introducing KRM
 nhìn qua thì KRM giống cái gì ?? mấy lệnh của Unix đúng ko? pipe output từ step này sang step tiếp theo.

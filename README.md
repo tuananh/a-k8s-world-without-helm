@@ -6,6 +6,10 @@ Từ trước tới h mình vẫn prefer Kustomize hơn Helm. Nó đơn giản h
 
 1 ví dụ với Helm. Nếu bạn cần support thêm property nào đó chẳng hạn thì khả năng phải update helm chart là rất cao. Viết 1 chart mà support đầy đủ mọi feature thì khá là mệt. Nhất là khi mọi người đang extend k8s functionalities với CRD và controller/operator rất phổ biến.
 
+Thời điểm cách đây vài năm thì việc support hết các property trong các object phổ biến của k8s thì tuy hơi cực nhưng vẫn làm được. Thế nhưng controller/operator/CRD bây h càng ngày càng nhiều thì việc này là bất khả thi.
+
+1 việc khác là validate và mutate cũng khá khó khăn với các tooling hiện tại nếu ko có sự trợ giúp từ admission controller. 
+
 ## Introducing KRM
 nhìn qua thì KRM giống cái gì ?? mấy lệnh của Unix đúng ko? pipe output từ step này sang step tiếp theo.
 

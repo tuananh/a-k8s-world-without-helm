@@ -40,8 +40,8 @@ Bạn hoàn toàn có thể kết hợp KRM với bất kì orchestrator nào m�
 
 ## KRM Function Registry
 
-KRM giới thiệu thêm KRM function registry giúp mọi người có thể sử dụng lại các step phổ biến.
+KRM functions registry là 1 catalog giúp mọi người có thể tìm kiếm, sử dụng và chia sẻ lại các step phổ biến.
 
-Lợi ích của KRM là việc chúng ta có thể viết các đoạn code ngắn gọn, dễ thay đổi, ko ép buộc phải xài 1 ngôn ngữ cố định nào cả và có thể chain lại thành 1 configuration management pipeline
+Lợi ích của KRM functions registry là việc chúng ta có thể viết các đoạn code ngắn gọn, dễ thay đổi, ko ép buộc phải xài 1 ngôn ngữ cố định nào cả và có thể chain lại thành 1 configuration management pipeline 1 cách dễ dàng.
 
 ## kpt.dev

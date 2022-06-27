@@ -10,11 +10,13 @@ Thời điểm cách đây vài năm thì việc support hết các property tro
 
 > Fun fact: Mình hay nói đùa là để cài Istio, chúng ta cần cài thêm 7x7 49 CustomResourceDefinition (CRD) nhưng con số thực tế là 53 cơ.
 
-1 việc khác là validate và mutate cũng khá khó khăn với các tooling hiện tại nếu ko có sự trợ giúp từ admission controller. Thế nhưng admission controller chỉ có ở server side. 
+1 việc khác là validate và mutate cũng khá khó khăn với các tooling hiện tại nếu ko có sự trợ giúp từ admission controller. Thế nhưng admission controller chỉ có ở server side.
 
-## Introducing KRM
+Nếu vậy thì sao ko xài Kustomize? Thực ra lúc đầu Kustomize cũng là 1 lựa chọn ko tồi cho việc transformations. In fact, dự án kpt của Google cũng định như vậy nhưng mà mô hình họ muốn sử dụng cho kpt khá khác với mô hình của Kustomize. 1 ví dụ là việc kpt muốn upstream package muốn có admission control với các derived package chẳng hạn, nhưng với Kustomize thì lại dễ dàng "override everything" từ base.
 
-Trước khi đọc tiếp thì mọi người có thể đọc qua 1 chút về KRM ở đây: https://github.com/kubernetes-sigs/krm-functions-registry
+## Enter KRM Functions
+
+Trước khi đọc tiếp thì mọi người có thể đọc qua 1 chút về KRM Functions ở đây: https://github.com/kubernetes-sigs/krm-functions-registry
 
 ```yaml
 pipeline:
@@ -28,9 +30,9 @@ pipeline:
 
 Cái này là 1 ví dụ của kpt dùng KRM functions nhưng nó có thể nói lên 1 chút về cách sử dụng của KRM functions.
 
-Nhìn qua thì KRM giống cái gì ?? mấy lệnh của Unix đúng ko? pipe output từ step này sang step tiếp theo.
+Nhìn qua thì KRM Functions giống cái gì ?? mấy lệnh của Unix đúng ko? pipe output từ step này sang step tiếp theo.
 
-Thực ra concept này cũng ko mới với kustomize nếu bạn có đọc codebase của kustomize kĩ 1 chút. thế nên nếu ai quen với kustomize thì việc này cũng không quá ngạc nhiên. chẳng qua các step của kustomize ko phải là do user provide ra mà thôi.
+Thực ra concept này cũng ko mới với Kustomize nếu bạn có đọc codebase của Kustomize kĩ 1 chút. thế nên nếu ai quen với Kustomize thì việc này cũng không quá ngạc nhiên. chẳng qua các step của kustomize ko phải là do user provide ra mà thôi.
 
 KRM cũng mang hơi chút bóng dáng của admission controller, nhưng ở phía client. với KRM, bạn cũng có thể validate hoặc mutate k8s resource object đc như admission controller. the difference is it's a hell lot easier to maintain vs writing rego for example (Looking at you OPA).
 

@@ -2,17 +2,31 @@
 
 > A Kubernetes world without Helm
 
-Từ trước tới h mình vẫn prefer Kustomize hơn Helm. Nó đơn giản hơn, easy to grasp và rất dễ để học và extend. Để giải thích Kustomize thì chỉ cần 5 phút là người mới có thể bắt đầu viết được. Còn helm thì ai ko familiar với go thì hơi ngán 1 chút với template engine.
+Từ trước tới giờ mình vẫn prefer Kustomize hơn Helm. Nó đơn giản hơn, easy to grasp và rất dễ để học và extend. Để giải thích Kustomize thì chỉ cần 5 phút là người mới có thể bắt đầu viết được. Còn helm thì ai ko familiar với Go thì hơi ngán 1 chút với Go's template engine.
 
-1 ví dụ với Helm. Nếu bạn cần support thêm property nào đó chẳng hạn thì khả năng phải update helm chart là rất cao. Viết 1 chart mà support đầy đủ mọi feature thì khá là mệt. Nhất là khi mọi người đang extend k8s functionalities với CRD và controller/operator rất phổ biến.
+1 ví dụ với Helm: nếu bạn cần support thêm property nào đó chẳng hạn thì khả năng phải update helm chart là rất cao. Viết 1 chart mà support đầy đủ mọi feature thì khá là mệt. Nhất là khi mọi người đang extend k8s functionalities với CRD và controller/operator rất phổ biến.
 
-Thời điểm cách đây vài năm thì việc support hết các property trong các object phổ biến của k8s thì tuy hơi cực nhưng vẫn làm được. Thế nhưng controller/operator/CRD bây h càng ngày càng nhiều thì việc này là bất khả thi.
+Thời điểm cách đây vài năm thì việc support hết các property trong các object phổ biến của k8s thì tuy hơi cực nhưng vẫn là làm được. Thế nhưng controller/operator/CRD bây giờ càng ngày càng nhiều thì việc này là bất khả thi.
+
+> Fun fact: Mình hay nói đùa là để cài Istio, chúng ta cần cài thêm 7x7 49 CustomResourceDefinition (CRD) nhưng con số thực tế là 53 cơ.
 
 1 việc khác là validate và mutate cũng khá khó khăn với các tooling hiện tại nếu ko có sự trợ giúp từ admission controller. Thế nhưng admission controller chỉ có ở server side. 
 
 ## Introducing KRM
 
 Trước khi đọc tiếp thì mọi người có thể đọc qua 1 chút về KRM ở đây: https://github.com/kubernetes-sigs/krm-functions-registry
+
+```yaml
+pipeline:
+  mutators:
+    - image: gcr.io/kpt-fn/set-labels:v0.1
+      configMap:
+        app: wordpress
+  validators:
+    - image: gcr.io/kpt-fn/kubeval:v0.3
+```
+
+Cái này là 1 ví dụ của kpt dùng KRM functions nhưng nó có thể nói lên 1 chút về cách sử dụng của KRM functions.
 
 Nhìn qua thì KRM giống cái gì ?? mấy lệnh của Unix đúng ko? pipe output từ step này sang step tiếp theo.
 
